@@ -15,28 +15,25 @@ Installation Guide:
 - For Mac:
   - $ export FLASK_APP=flaskr  
   - $ export FLASK_ENV=development
-  - $ flask init-db    
 - For Windows:  
   - $ set FLASK_APP=flaskr  
   - $ set FLASK_ENV=development  
-  - $ flask init-db  
 ##### 3. To Run:  
 - $ py app.py
 - open up http://127.0.0.1:5000
 
-## **spaCy textblob Installation: (should all be in venv)**    
+##### SPACY textblob Installation **should all be in the virtual environment**
+- $ pip install spacytextblob 
+- $ python -m textblob.download_corpora
+- $ python -m spacy download en_core_web_sm
 
-SPACY textblob Installation **should all be inthe virtual environment**
-    $ pip install spacytextblob 
-    $ python -m textblob.download_corpora
-    $ python -m spacy download en_core_web_sm
+#### Text to Emotion Installation **should all be in the virtual environment**
+- $ pip install text2emotion
 
-Text to Emotion Installation **should all be inthe virtual environment**
-    $ pip install text2emotion
+#### Hate Sonar Intallation **should all be in the virtual environment**
+- $ pip install hatesonar
 
-Hate Sonar Intallation
-    $ pip install hatesonar
+#### Perspective Installation **should all be in the virtual environment**
+- $ venv\Scripts\pip.exe install google-api-python-client
+- Change the client key in perspective.py to what Charu posted in the chat
 
-Perspective:
-    Change the client key
-    $venv\Scripts\pip.exe install google-api-python-client

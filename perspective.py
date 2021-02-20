@@ -9,7 +9,7 @@ import sklearn.linear_model._logistic
 def perspectiveAPI(text):
     
     #CHANGE THIS TO THE KEY I SENT IN THE CHAT
-    API_KEY=''
+    API_KEY='AIzaSyDVVED8au0o1DZGFZrsRGJ1EmJyWJz-EVM'
     service = discovery.build('commentanalyzer', 'v1alpha1', developerKey=API_KEY)
     analyze_request = {
     'comment': { 'text': text },
