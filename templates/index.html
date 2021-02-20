@@ -23,7 +23,7 @@
             aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
             aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
             occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <form method="post" action="/nlp">
+            <form method="post" action="/nlp" my-form>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Type in a sentence to be analyzed...</label>
                     <textarea name="text" class="form-control" id="exampleFormControlTextarea1"></textarea>
@@ -32,6 +32,7 @@
             </form>
         </div>
         <p>NLP Analyses Results go here.</p>
+        <pre data-preview></pre>
     </div> <!-- End page content-->
 
 
@@ -44,6 +45,45 @@
     </footer>
 
     <!-- Scripts -->
+    <script>
+        var data;
+
+        // Listen on the form and wait for submission.
+        // On submission, make a POST request with fetch to analyze the data in Flask.
+        window.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+            const form = document.querySelector('[my-form]');
+            const textInput = document.querySelector('[name=text]');
+            const preview = document.querySelector('[data-preview]');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const text = textInput.value;
+                const results = await fetchData(text);
+                preview.textContent = JSON.stringify(results, null, 4);
+                data = results;
+                console.log(data);
+            });
+        }
+
+        // This makes the post request.
+        async function fetchData(text) {
+            const payload = new FormData();
+            payload.append('text', text);
+
+            const res = await fetch('/nlp', {
+                method: 'post',
+                body: payload
+            });
+            const data = await res.json();
+            return data;
+        }
+    </script>
+
+
+    <!-- Scripts from outside -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -52,7 +92,6 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
+        crossorigin="anonymous"></script> 
 </body>
 </html>  
