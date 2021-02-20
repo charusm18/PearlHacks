@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
+
 app = Flask(__name__)
 import spacy
 from spacytextblob.spacytextblob import SpacyTextBlob
@@ -29,9 +30,14 @@ def hateSonar(text):
 def home():
    return render_template('index.html')
 
+@app.route('/nlp', methods = ['POST'])
+def nlp():
+    text = request.form['text']
+    spacyFunctions(text)
+    emotions(text)
+    # hateSonar(text)
+    return redirect('/')
+
 if __name__ == '__main__':
-   #app.run()
-   text = "I am having a very very bad day that sucks. "
-   spacyFunctions(text)
-   emotions(text)
-   hateSonar(text)
+   app.run()
+   

@@ -5,9 +5,13 @@ __pycache__/
 # C extensions
 *.so
 
+# Node
+node_modules
+
 # Distribution / packaging
 .Python
 venv/
+env/
 bin/
 build/
 develop-eggs/
