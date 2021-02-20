@@ -13,6 +13,7 @@ Installation Guide:
   - $ venv\Scripts\activate.bat
 ##### 2. Install Flask (should be in venv)  
 - $ pip install -e .
+- $ pip install Flask
 - For Mac:
   - $ export FLASK_APP=flaskr  
   - $ export FLASK_ENV=development
