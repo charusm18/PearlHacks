@@ -12,6 +12,9 @@ load_dotenv()
 import os
 token = os.environ.get("api_key")
 
+"""
+Purpose: Utilize python NLP packages to analyze text.
+"""
 def perspectiveAPI(text):
     API_KEY = token
     service = discovery.build('commentanalyzer', 'v1alpha1', developerKey=API_KEY)
@@ -29,7 +32,6 @@ def perspectiveAPI(text):
           "identity_attack": response['attributeScores']['IDENTITY_ATTACK']['summaryScore']['value']
     }
   
-
 def spacyFunctions(text):
     nlp = spacy.load('en_core_web_sm')
     spacy_text_blob = SpacyTextBlob()
