@@ -27,13 +27,12 @@ Installation Guide:
 - $ python -m textblob.download_corpora
 - $ python -m spacy download en_core_web_sm
 
-#### Text to Emotion Installation **should all be in the virtual environment**
+##### Text to Emotion Installation **should all be inthe virtual environment**
 - $ pip install text2emotion
 
-#### Hate Sonar Intallation **should all be in the virtual environment**
+##### Hate Sonar Intallation
 - $ pip install hatesonar
 
-#### Perspective Installation **should all be in the virtual environment**
-- $ venv\Scripts\pip.exe install google-api-python-client
-- Change the client key in perspective.py to what Charu posted in the chat
-
+##### Perspective:
+- Change the client key
+- $venv\Scripts\pip.exe install google-api-python-client
