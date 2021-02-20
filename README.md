@@ -26,7 +26,7 @@ Installation Guide:
 
 ## **spaCy textblob Installation: (should all be in venv)**    
 
-SPACY textblob Installation **should all be inthe virtual environment**
+##### SPACY textblob Installation **should all be inthe virtual environment**
 - $ pip install spacytextblob 
 - $ python -m textblob.download_corpora
 - $ python -m spacy download en_core_web_sm
