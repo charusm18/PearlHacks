@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 app = Flask(__name__)
-import spacy
-from spacytextblob.spacytextblob import SpacyTextBlob
+# import spacy
+# from spacytextblob.spacytextblob import SpacyTextBlob
 
 # @app.route('/nlp')
 def spacyFunctions():
@@ -19,5 +19,5 @@ def home():
    return render_template('index.html')
 
 if __name__ == '__main__':
-   #app.run()
-   spacyFunctions()
+   app.run()
+   # spacyFunctions()
