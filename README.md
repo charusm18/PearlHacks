@@ -27,3 +27,9 @@ SPACY textblob Installation **should all be inthe virtual environment**
     $ pip install spacytextblob 
     $ python -m textblob.download_corpora
     $ python -m spacy download en_core_web_sm
+
+Text to Emotion Installation **should all be inthe virtual environment**
+    $ pip install text2emotion
+
+Hate Sonar Intallation
+    $ pip install hatesonar
