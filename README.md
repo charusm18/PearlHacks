@@ -27,16 +27,16 @@ Installation Guide:
 ## **spaCy textblob Installation: (should all be in venv)**    
 
 SPACY textblob Installation **should all be inthe virtual environment**
-    $ pip install spacytextblob 
-    $ python -m textblob.download_corpora
-    $ python -m spacy download en_core_web_sm
+- $ pip install spacytextblob 
+- $ python -m textblob.download_corpora
+- $ python -m spacy download en_core_web_sm
 
-Text to Emotion Installation **should all be inthe virtual environment**
-    $ pip install text2emotion
+##### Text to Emotion Installation **should all be inthe virtual environment**
+- $ pip install text2emotion
 
-Hate Sonar Intallation
-    $ pip install hatesonar
+##### Hate Sonar Intallation
+- $ pip install hatesonar
 
-Perspective:
-    Change the client key
-    $venv\Scripts\pip.exe install google-api-python-client
+##### Perspective:
+- Change the client key
+- $venv\Scripts\pip.exe install google-api-python-client
