@@ -24,7 +24,7 @@ Installation Guide:
 - $ py app.py
 - open up http://127.0.0.1:5000
 
-## **spaCy textblob Installation: (should all be in venv)**    
+## **NLP package Installation: (should all be in venv)**    
 
 ##### SPACY textblob Installation **should all be inthe virtual environment**
 - $ pip install spacytextblob 
@@ -40,3 +40,6 @@ Installation Guide:
 ##### Perspective:
 - Change the client key
 - $venv\Scripts\pip.exe install google-api-python-client
+
+## **.env file Installation: (should be in venv)**
+- $ pip install -U python-dotenv
