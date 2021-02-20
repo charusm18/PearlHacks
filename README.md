@@ -36,3 +36,7 @@ Text to Emotion Installation **should all be inthe virtual environment**
 
 Hate Sonar Intallation
     $ pip install hatesonar
+
+Perspective:
+    Change the client key
+    $venv\Scripts\pip.exe install google-api-python-client
