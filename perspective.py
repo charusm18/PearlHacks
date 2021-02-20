@@ -6,10 +6,14 @@ import text2emotion as te
 from hatesonar import Sonar
 import sklearn.linear_model._logistic
 
+# for environmental variable
+from dotenv import load_dotenv
+load_dotenv()
+import os
+token = os.environ.get("api_key")
+
 def perspectiveAPI(text):
-    
-    #CHANGE THIS TO THE KEY I SENT IN THE CHAT
-    API_KEY=''
+    API_KEY = token
     service = discovery.build('commentanalyzer', 'v1alpha1', developerKey=API_KEY)
     analyze_request = {
     'comment': { 'text': text },
