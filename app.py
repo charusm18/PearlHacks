@@ -34,4 +34,4 @@ if __name__ == '__main__':
    text = "I am having a very very bad day that sucks. "
    spacyFunctions(text)
    emotions(text)
-   #hateSonar(text)=> not working bc missing sklearn package
+   hateSonar(text)
