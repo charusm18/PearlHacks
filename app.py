@@ -30,6 +30,10 @@ def hateSonar(text):
 def home():
    return render_template('index.html')
 
+@app.route('/test')
+def test():
+   return render_template('test.html')
+
 @app.route('/nlp', methods = ['POST'])
 def nlp():
     text = request.form['text']

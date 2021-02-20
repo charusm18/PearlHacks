@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Perspective Graph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+
+        // Global Options
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        
+
+        let toxicChart = new Chart(myChart, {
+            type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
+            data: {
+                labels:['Toxic', 'Not toxic'],
+                datasets:[ {
+                    label: 'Percentage',
+                    data: [
+                        75,
+                        25
+                    ],
+                    backgroundColor: [
+                        'green',
+                        'red'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: 'black'
+                }]
+            },
+            options:{
+                title: {
+                    display: true,
+                    text: 'Toxicity',
+                    fontSize: 25
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: { // hover thing
+                    enabled: true
+                }
+            }
+        });
+    </script>
+</body>
+</html>
