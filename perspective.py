@@ -6,10 +6,17 @@ import text2emotion as te
 from hatesonar import Sonar
 import sklearn.linear_model._logistic
 
+# for environmental variable
+from dotenv import load_dotenv
+load_dotenv()
+import os
+token = os.environ.get("api_key")
+
+"""
+Purpose: Utilize python NLP packages to analyze text.
+"""
 def perspectiveAPI(text):
-    
-    #CHANGE THIS TO THE KEY I SENT IN THE CHAT
-    API_KEY='AIzaSyDVVED8au0o1DZGFZrsRGJ1EmJyWJz-EVM'
+    API_KEY = token
     service = discovery.build('commentanalyzer', 'v1alpha1', developerKey=API_KEY)
     analyze_request = {
     'comment': { 'text': text },
@@ -25,7 +32,6 @@ def perspectiveAPI(text):
           "identity_attack": response['attributeScores']['IDENTITY_ATTACK']['summaryScore']['value']
     }
   
-
 def spacyFunctions(text):
     nlp = spacy.load('en_core_web_sm')
     spacy_text_blob = SpacyTextBlob()
