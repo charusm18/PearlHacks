@@ -37,7 +37,10 @@ Installation Guide:
 
 ##### Perspective:
 - Change the client key
-- $venv\Scripts\pip.exe install google-api-python-client
+- For Mac:
+  - $ venv/bin/pip install google-api-python-client 
+- For Windows:
+  - $venv\Scripts\pip.exe install google-api-python-client
 
 ## **.env file Installation: (should be in venv)**
 - $ pip install -U python-dotenv
