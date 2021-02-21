@@ -28,7 +28,7 @@
         <div class="test">
             <p id="description">Type your message into the text box below to see how others might interpret your message based on its toxicity, emotional tone, and other attributes.</p>
             <form method="post" action="/analysis" my-form>
-                <div >
+                <div>
                     <textarea placeholder="Type here to see the impact of your message." name="text" id="weight"></textarea>
                 </div>
                 <br>
@@ -73,8 +73,6 @@
                     The likelihood that someone will perceive your message as an attack on their identity is {{(perspectiveValues['identity_attack'] * 100)|int}}%.  </p>
             </label>          
         </div>
-
-
         
         <button type="button" class="collapsible" id ='c1'>
             <div class="plus"><span class="add" id = "col1">

@@ -19,13 +19,13 @@
 .logo {
   width: 100px;
   height: auto;
-  margin-left: 40px;
+  margin-left: 80px;
   margin-top: 20px;
 }
 
 .test-main {
   text-align: center;
-  
+  margin-bottom: 100px;
 }
 
 .test {
