@@ -73,8 +73,7 @@
 
         <button type="button" class="collapsible">Sentiment</button>
         <div class="content">
-            <p>{{sentimentValues}}</p>
-            <canvas id="polarity" style="width: 70%; display: inline-block; position: relative;"></canvas>
+            <canvas id="polarity" style="width: 520px; height: 455px; display: inline-block"></canvas>
 
         </div>
         {% endif %}
@@ -324,47 +323,47 @@
             }
         });
     </script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/highcharts-more.js"></script>
+
 <script>
-        const polarity = 100 * "{{sentimentValues['polarity'] | safe }}";
-        Chart.defaults.global.elements.point = "star"
-        var polChart = document.getElementById('polarity').getContext('2d');
-        var myChart = new Chart(polChart, {
-            type: "scatter",
-            data: {
-                datasets: [{
-                    fill: false,
-                    data: [
-                        {x: polarity, y: 0}
-                    ],
-                    borderColor: "red",
-                    pointRadius: 10,
-                }]
-            }, 
+        const polarity =  "{{sentimentValues['polarity'] | safe }}";
+        const subjectivity = "{{sentimentValues['subjectivity'] | safe }}";
+
+        var MeSeContext = document.getElementById("polarity").getContext("2d");
+        var MeSeData = {
+            labels: [
+                "Polarity",
+                "Subjectivity"
+            ],
+            datasets: [{
+                // categoryPercentage: 1,
+                // barThickness: 30,
+                data: [polarity, subjectivity],
+                backgroundColor: ["#669911", "#119966"],
+                hoverBackgroundColor: ["#66A2EB", "#FCCE56"]
+            }]
+        };
+
+        var MeSeChart = new Chart(MeSeContext, {
+            type: 'horizontalBar',
+            data: MeSeData,
             options: {
-                scales:{
-                    yAxes: [{                
-                        display: false,
-                        gridLines : {
-                            drawOnChartArea: false
-                        }
-                    }],
-                    xAxes: [ { 
+                scales: {
+                    xAxes: [{
+                        categorySpacing: 0,
+                        stacked: true,
                         ticks: {
                             min: -1,
-                            stepSize: 0.2
-                        },
-                        position: 'top',
-                        gridLines: { 
-                            display: false
-                        }, 
+                            max: 1
+                        }
+                    }],
+                    yAxes: [{
+                        stacked: true,
+                        categorySpacing: 0
                     }]
-                 }
-             }
-            
-        
-    });
+                }
+
+            }
+        });
 </script>
 
     <!-- Emotion Radar Chart -->
