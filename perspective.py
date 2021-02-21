@@ -41,7 +41,9 @@ def spacyFunctions(text):
 
     important_words = []
     for i in doc._.sentiment.assessments:
-        important_words.extend(i[0])
+        for j in i[0]:
+            if j not in important_words:
+                important_words.append(j)
 
     return { 
         'polarity': round(doc._.sentiment.polarity, 4), 
