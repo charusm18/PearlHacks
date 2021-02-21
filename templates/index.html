@@ -54,22 +54,22 @@
         <div class="content">
             <label class="inner" style = "display: inline-block;">                  
                 <canvas id="toxicity" style="width: 70%; display: inline-block; position: relative;"></canvas>
-                <p> A rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion. 
+                <p id="perspective-des"> A rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion. 
                 The likelihood that someone will perceive your message as toxic is {{(perspectiveValues['toxicity'] * 100)|int}}%. </p>
             </label>
             <label class="inner" style = "display: inline-block;">                  
                 <canvas id="insult" style="width: 70%; display: inline-block; position: relative;"></canvas>
-                <p> An inflammatory or negative comment towards a person or a group of people that can offend. 
+                <p id="perspective-des"> An inflammatory or negative comment towards a person or a group of people that can offend. 
                     The likelihood that someone will perceive your message as insulting is {{(perspectiveValues['insult'] * 100)|int}}%.</p>
             </label>                
             <label class="inner" style = "display: inline-block;">                  
                 <canvas id="threat" style="width: 70%; display: inline-block; position: relative;"></canvas>
-                <p> An intention to inflict pain, injury, or violence against an individual or group. 
+                <p id="perspective-des"> An intention to inflict pain, injury, or violence against an individual or group. 
                     The likelihood that someone will perceive your message as threatening is {{(perspectiveValues['threat'] * 100)|int}}%. </p>
             </label>  
             <label class="inner" style = "display: inline-block;">                  
                 <canvas id="identity_attack" style="width: 70%; display: inline-block; position: relative;"></canvas>
-                <p> A negative or hateful comment targeting someone because of their identity. 
+                <p id="perspective-des"> A negative or hateful comment targeting someone because of their identity. 
                     The likelihood that someone will perceive your message as an attack on their identity is {{(perspectiveValues['identity_attack'] * 100)|int}}%.  </p>
             </label>          
         </div>
