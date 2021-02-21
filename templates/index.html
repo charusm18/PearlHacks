@@ -72,6 +72,8 @@
                     The likelihood that someone will perceive your message as an attack on their identity is {{(perspectiveValues['identity_attack'] * 100)|int}}%.  </p>
             </label>          
         </div>
+
+
         
         <button type="button" class="collapsible" id ='c1'>
             <div class="plus"><span class="add" id = "col1">
@@ -380,7 +382,12 @@
                                 return  "Subjectivity: " + data['datasets'][0]['data'][1];
                             if(tooltipItem.yLabel == "Negative")
                                 return "Polarity: " + data['datasets'][0]['data'][0];
-
+                        },
+                        title: function(tooltipItem, data) {
+                            if(tooltipItem.yLabel == "Objective")
+                                return "Subjectivity";
+                            if(tooltipItem.yLabel == "Negative")
+                                return "Polarity";
                         }
                     }},
                     responsive: false,
