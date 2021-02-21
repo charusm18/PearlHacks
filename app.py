@@ -22,11 +22,6 @@ def nlp():
    sentimentValues = spacyFunctions(text)
    emotionsValues = emotions(text)
    perspectiveValues = perspectiveAPI(text)
-   # hateSonar(text)
-   print(sentimentValues)
-   print(emotionsValues)
-   print(perspectiveValues)
-
    # return redirect('/')
    return render_template('index.html',  initScreen = False, sentimentValues=sentimentValues, emotionsValues = emotionsValues, perspectiveValues=perspectiveValues)
 

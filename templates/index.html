@@ -30,13 +30,18 @@
                 <button type="submit" class="btn btn-dark">Submit</button>
             </form>
         </div>
-        <p>NLP Analysis will appear after you input some text</p>
+        {% if initScreen %}
+        <p>Your sentence analysis will appear after you input some text</p>
+        {% endif %}
+
 
         {% if not initScreen %}
         <button type="button" class="collapsible">Perspective</button>
         <div class="content">
-                <p>{{perspectiveValues}}</p>
-                <canvas id="toxicity" style = "width: 20%;"></canvas>
+                <canvas id="toxicity" style="display: inline-block"></canvas>
+                <canvas id="insult" style="display: inline-block"></canvas>
+                <canvas id="threat" style="display: inline-block"></canvas>
+                <canvas id="identity_attack" style="display: inline-block"></canvas>
         </div>
         
         <button type="button" class="collapsible">Emotion</button>
@@ -95,13 +100,17 @@
         <script>
             const toxicity = 100 * "{{perspectiveValues['toxicity'] | safe }}";
             const insult = 100 *"{{perspectiveValues['insult'] | safe }}";
-            const profanity = 100 *"{{perspectiveValues['profanity'] | safe }}";
             const threat = 100 *"{{perspectiveValues['threat'] | safe }}";
             const identity_attack = 100 * "{{perspectiveValues['identity_attack'] | safe }}";
 
-            let myChart = document.getElementById('toxicity').getContext('2d');
+            let tChart = document.getElementById('toxicity').getContext('2d');
+            let iChart = document.getElementById('insult').getContext('2d');
+            let thChart = document.getElementById('threat').getContext('2d');
+            let idChart = document.getElementById('identity_attack').getContext('2d');
+
+
             Chart.defaults.global.defaultFontFamily = 'Lato';
-            let toxicChart = new Chart(myChart, {
+            let toxicChart = new Chart(tChart, {
                 type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
                 data: {
                     labels:['Toxic', 'Not toxic'],
@@ -121,10 +130,12 @@
                     }]
                 },
                 options:{
+                    aspectRatio: 1,
+                    responsive: false,
                     title: {
                         display: true,
                         text: 'Toxicity',
-                        fontSize: 25
+                        fontSize: 25,
                     },
                     legend: {
                         display: false,
@@ -135,11 +146,156 @@
                     },
                     layout: {
                         padding: {
-                            left: 50,
+                            left: 0,
                             right: 0,
                             bottom: 0,
                             top: 0
+                        },
+                        display: "inline-block"
+                    },
+                    tooltips: { // hover thing
+                        enabled: true
+                    }
+                }
+            });
+            let insultChart = new Chart(iChart, {
+                type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
+                data: {
+                    labels:['Insulting', 'Not Insulting'],
+                    datasets:[ {
+                        label: 'Percentage',
+                        data: [
+                            insult, 100- insult
+                        ],
+                        backgroundColor: [
+                            'green',
+                            'red'
+                        ],
+                        borderWidth: 1,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: 'black'
+                    }]
+                },
+                options:{
+                    aspectRatio: 1,
+                    responsive: false,
+                    title: {
+                        display: true,
+                        text: 'Insult',
+                        fontSize: 25,
+                    },
+                    legend: {
+                        display: false,
+                        position: 'right',
+                        labels: {
+                            fontColor: 'black'
                         }
+                    },
+                    layout: {
+                        padding: {
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            top: 0
+                        },
+                        display: "inline-block"
+                    },
+                    tooltips: { // hover thing
+                        enabled: true
+                    }
+                }
+            });
+            let threatChart = new Chart(thChart, {
+                type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
+                data: {
+                    labels:['Threat', 'Not a threat'],
+                    datasets:[ {
+                        label: 'Percentage',
+                        data: [
+                            threat, 100- threat
+                        ],
+                        backgroundColor: [
+                            'green',
+                            'red'
+                        ],
+                        borderWidth: 1,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: 'black'
+                    }]
+                },
+                options:{
+                    aspectRatio: 1,
+                    responsive: false,
+                    title: {
+                        display: true,
+                        text: 'Threat',
+                        fontSize: 25,
+                    },
+                    legend: {
+                        display: false,
+                        position: 'right',
+                        labels: {
+                            fontColor: 'black'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            top: 0
+                        },
+                        display: "inline-block"
+                    },
+                    tooltips: { // hover thing
+                        enabled: true
+                    }
+                }
+            });
+            let identityChart = new Chart(idChart, {
+                type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
+                data: {
+                    labels:['Identity Attack', 'Not an Identity Attack'],
+                    datasets:[ {
+                        label: 'Percentage',
+                        data: [
+                            identity_attack, 100- identity_attack
+                        ],
+                        backgroundColor: [
+                            'green',
+                            'red'
+                        ],
+                        borderWidth: 1,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: 'black'
+                    }]
+                },
+                options:{
+                    aspectRatio: 1,
+                    responsive: false,
+                    title: {
+                        display: true,
+                        text: 'Identity Attack',
+                        fontSize: 25,
+                    },
+                    legend: {
+                        display: false,
+                        position: 'right',
+                        labels: {
+                            fontColor: 'black'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            top: 0
+                        },
+                        display: "inline-block"
                     },
                     tooltips: { // hover thing
                         enabled: true
