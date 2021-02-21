@@ -39,6 +39,8 @@ def spacyFunctions(text):
     nlp.add_pipe(spacy_text_blob)
     doc = nlp(text)
 
+    
+
     return { 
         'polarity': round(doc._.sentiment.polarity, 4), 
         'subjectivity': round(doc._.sentiment.subjectivity,4),
