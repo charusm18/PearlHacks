@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>Emotion Analysis</title>
+    <link rel="shortcut icon" type="image/jpg" href="static/images/mirror_logo2.svg"/>
     <meta name="author" content="Charu, Cristie, Eva, Kristy">
     <meta name="description" content="A emotion analysis app for inputted sentences.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +19,16 @@
 </head>
 
 <body class="d-flex flex-column">
+    <div class="header">
+        <a href="index.html"><img class="logo" src="/static/images/mirror_logo1_final.svg" alt="logo"></a>
+    </div>
     <div class="test-main" id="page-content">
         <h1 id="page-title">Does the intention of your message align with its impact?</h1>
         <div class="test">
-            <p>Type your message into the text box below to see how others might interpret your message based on its toxicity, emotional tone, and other attributes.</p>
+            <p id="description">Type your message into the text box below to see how others might interpret your message based on its toxicity, emotional tone, and other attributes.</p>
             <form method="post" action="/nlp" my-form>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Type in a sentence to be analyzed...</label>
-                    <textarea name="text" class="form-control" id="exampleFormControlTextarea1"></textarea>
+                    <textarea placeholder="Type here to see the impact of your message." name="text" class="form-control" id="exampleFormControlTextarea1"></textarea>
                 </div>
                 <button type="submit" class="btn btn-dark">Submit</button>
             </form>

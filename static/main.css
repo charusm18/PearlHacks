@@ -12,6 +12,18 @@
 }
 
 /* Body Classes */
+
+.name_header{
+  margin-right:auto;
+}
+
+.logo{
+  width: 100px;
+  height: auto;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
 .test-main {
   text-align: center;
 }
@@ -57,14 +69,45 @@ body {
 }
 
 body {
-  background: linear-gradient(#ffffff, #e9e9e9);
+  background: #ffffff;
 }
 
 p{
   font-family: josefin-light;
   font-size: 16px;
   line-height: 28px;
-  margin-top: 41px;
+}
+
+#description {
+  font-family: josefin-light;
+  font-size: 16px;
+  line-height: 28px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+::-webkit-input-placeholder {
+  font-family: josefin-regular;
+  font-size: 16px;
+  color: red;
+}
+
+::-moz-placeholder {
+  font-family: josefin-regular;
+  font-size: 16px;
+  color: red;
+}
+
+::-ms-placeholder {
+  font-family: josefin-regular;
+  font-size: 16px;
+  color: red;
+}
+
+::placeholder {
+  font-family: josefin-regular;
+  font-size: 16px;
+  color: red;
 }
 
 h1{
