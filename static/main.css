@@ -83,6 +83,28 @@ p {
   font-family: josefin-regular;
 }
 
+#weight2 {
+  font-family: josefin-bold;
+}
+
+.submit-button {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  padding: 5px;
+  margin-top: 11px;
+  text-align: center;
+  width: 98px;
+  background-color: #584770;
+  border: none;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+
+#button-holder {
+  vertical-align: middle;
+  text-align: right;
+}
+
 textarea {
   padding: 20px;
   border-radius: 20px;
