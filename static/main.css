@@ -94,19 +94,19 @@ p {
 .submit-button {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-  padding: 5px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding-left: 19px;
+  padding-right: 19px;
+  padding-top: 14px;
+  padding-bottom: 9px;
   margin-top: 11px;
   text-align: center;
   width: 98px;
-  background-color: #584770;
+  background-color: #714F72;
   border: none;
   vertical-align: middle;
   border-radius: 10px;
-}
-
-#button-holder {
-  vertical-align: middle;
-  text-align: right;
 }
 
 textarea {
@@ -157,18 +157,19 @@ textarea:-ms-input-placeholder {
   color: white;
   font-family: josefin-regular;
   letter-spacing: 3px;
-  font-size: 14px;
+  font-size: 10px;
   padding-left: 19px;
   padding-right: 19px;
   padding-top: 14px;
   padding-bottom: 9px;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
-.btn-enter:hover,
-.btn-enter:active,
-.btn-enter:focus,
-.btn-enter.active {
-  /* let's darken #004E64 a bit for hover effect */
+.submit-button:hover,
+.submit-button:active,
+.submit-button:focus,
+.submit-button.active {
   background: #584770;
   color: #ffffff;
 }
