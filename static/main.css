@@ -13,11 +13,11 @@
 
 /* Body Classes */
 
-.name_header{
-  margin-right:auto;
+.name_header {
+  margin-right: auto;
 }
 
-.logo{
+.logo {
   width: 100px;
   height: auto;
   margin-left: 40px;
@@ -160,9 +160,15 @@ html {
 canvas {
   margin: 0 auto;
 }
+
 label {
   display: inline-block;
   margin-right: 15;
   margin-top: 15;
   width: 15%;
+}
+
+.inner {
+  display: inline-block;
+  vertical-align: top;
 }
