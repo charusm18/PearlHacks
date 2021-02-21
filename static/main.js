@@ -1,9 +1,20 @@
 // Emotion Radar Trial Script 
 // https://www.chartjs.org/docs/latest/charts/radar.html 
 
-$(".collapsible").click(function() {
-    $(".add").toggleClass("rotate");
+$(document.getElementById("c")).click(function() {
+    $(document.getElementById("col")).toggleClass("rotate");
 });
+
+$(document.getElementById("c1")).click(function() {
+    $(document.getElementById("col1")).toggleClass("rotate");
+});
+
+$(document.getElementById("c2")).click(function() {
+    $(document.getElementById("col2")).toggleClass("rotate");
+});
+
+
+
 
 // console.log(myData)
 let ctx = document.getElementById('emotion').getContext('2d');
