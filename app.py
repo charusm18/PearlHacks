@@ -22,14 +22,9 @@ def analysis():
     perspectiveValues = perspectiveAPI(text)
     emotionsValues = emotions(text)
     sentimentValues = spacyFunctions(text)
-    # hateSonar(text)
-
-    print("sentimentValues:", sentimentValues)
-    print("emotionsValues:", emotionsValues)
-    print("perspectiveValues:", perspectiveValues)
 
     # return redirect('/')
-    return render_template('index.html',  
+    return render_template('index.html', text = text,  
         initScreen = False, 
         sentimentValues = sentimentValues, 
         emotionsValues = emotionsValues, 
