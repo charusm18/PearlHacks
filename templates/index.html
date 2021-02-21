@@ -17,6 +17,15 @@
 
 </head>
 
+<style>
+    label {
+  display: inline-block;
+  margin-right: 15;
+  margin-top: 15;
+  width: 15%;
+}
+</style>
+
 <body class="d-flex flex-column">
     <div class="test-main" id="page-content">
         <h1 id="page-title">Does the intention of your message align with its impact?</h1>
@@ -38,13 +47,28 @@
         {% if not initScreen %}
         <button type="button" class="collapsible">Perspective</button>
         <div class="content">
-                <canvas id="toxicity" style="display: inline-block"></canvas>
-                <label id = "toxicity"> <p> A rude, disrespectful, or unreasonable 
-                    comment that is likely to make people leave a discussion. 
-                    The likelihood that someone will perceive your message as toxic is 45%. </p></label>
-                <canvas id="insult" style="display: inline-block"></canvas>
-                <canvas id="threat" style="display: inline-block"></canvas>
-                <canvas id="identity_attack" style="display: inline-block"></canvas>
+            <label style = "display: inline-block;">                  
+                <canvas id="toxicity" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> A rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion. 
+                The likelihood that someone will perceive your message as toxic is 45%. </p>
+               
+            </label>
+            <label style = "display: inline-block;">                  
+                <canvas id="insult" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> An inflammatory or negative comment towards a person or a group of people. 
+                    The likelihood that someone will perceive your message as insulting is 45%. </p>
+            </label>                
+            
+            <label style = "display: inline-block;">                  
+                <canvas id="threat" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> An intention to inflict pain, injury, or violence against an individual or group. 
+                    The likelihood that someone will perceive your message as threatening is 45%.  </p>
+            </label>  
+            <label style = "display: inline-block;">                  
+                <canvas id="identity_attack" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> A negative or hateful comment targeting someone because of their identity. 
+                    The likelihood that someone will perceive your message as an attack on their identity is 45%.  </p>
+            </label>          
         </div>
         
         <button type="button" class="collapsible">Emotion</button>
@@ -138,7 +162,10 @@
                     title: {
                         display: true,
                         text: 'Toxicity',
-                        fontSize: 25,
+                        fontFamily: "Josefin Sans",
+                        fontStyle: "bold",
+                        fontSize: 22,
+                        position: "bottom"
                     },
                     legend: {
                         display: false,
@@ -186,7 +213,10 @@
                     title: {
                         display: true,
                         text: 'Insult',
-                        fontSize: 25,
+                        fontFamily: "Josefin Sans",
+                        fontStyle: "bold",
+                        fontSize: 22,
+                        position: "bottom"
                     },
                     legend: {
                         display: false,
@@ -234,7 +264,10 @@
                     title: {
                         display: true,
                         text: 'Threat',
-                        fontSize: 25,
+                        fontFamily: "Josefin Sans",
+                        fontStyle: "bold",
+                        fontSize: 22,
+                        position: "bottom"
                     },
                     legend: {
                         display: false,
@@ -282,7 +315,10 @@
                     title: {
                         display: true,
                         text: 'Identity Attack',
-                        fontSize: 25,
+                        fontFamily: "Josefin Sans",
+                        fontStyle: "bold",
+                        fontSize: 22,
+                        position: "bottom"
                     },
                     legend: {
                         display: false,
