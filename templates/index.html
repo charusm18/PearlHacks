@@ -71,6 +71,8 @@
         <button type="button" class="collapsible">Sentiment</button>
         <div class="content">
             <p>{{sentimentValues}}</p>
+            <canvas id="polarity" style="width: 70%; display: inline-block; position: relative;"></canvas>
+
         </div>
         {% endif %}
 
@@ -115,6 +117,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script> 
 
+    <!-- perspectives charts -->
     <script>
         const toxicity = 100 * "{{perspectiveValues['toxicity'] | safe }}";
         const insult = 100 *"{{perspectiveValues['insult'] | safe }}";
@@ -313,6 +316,48 @@
             }
         });
     </script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script>
+        const polarity = 100 * "{{sentimentValues['polarity'] | safe }}";
+        Chart.defaults.global.elements.point = "star"
+        var polChart = document.getElementById('polarity').getContext('2d');
+        var myChart = new Chart(polChart, {
+            type: "scatter",
+            data: {
+                datasets: [{
+                    fill: false,
+                    data: [
+                        {x: polarity, y: 0}
+                    ],
+                    borderColor: "red",
+                    pointRadius: 10,
+                }]
+            }, 
+            options: {
+                scales:{
+                    yAxes: [{                
+                        display: false,
+                        gridLines : {
+                            drawOnChartArea: false
+                        }
+                    }],
+                    xAxes: [ { 
+                        ticks: {
+                            min: -1,
+                            stepSize: 0.2
+                        },
+                        position: 'top',
+                        gridLines: { 
+                            display: false
+                        }, 
+                    }]
+                 }
+             }
+            
+        
+    });
+</script>
 
     <!-- Emotion Radar Chart -->
     <script>
