@@ -78,6 +78,10 @@ h1 {
   text-align: center;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 .collapsible {
   font-family: Josefin Sans;
   font-style: normal;
