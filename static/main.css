@@ -73,6 +73,11 @@ p {
   line-height: 28px;
 }
 
+#perspective-des {
+  margin-top: 10px;
+  line-height: 22px;
+}
+
 /* Description */
 #description {
   font-family: josefin-regular;
@@ -100,7 +105,7 @@ p {
   padding-right: 19px;
   padding-top: 14px;
   padding-bottom: 9px;
-  margin-top: 11px;
+  /* margin-top: 11px; */
   text-align: center;
   width: 98px;
   background-color: #714F72;
