@@ -33,16 +33,15 @@
                 </div>
                 <br>
                 <div id="button-holder">
-                    <button id="weight" class="submit-button" type="submit">ENTER</button>
+                    <button id="weight" class="submit-button" type="submit" style = "float:right">ENTER</button>
                 </div>
                 <!-- <button type="submit" class="btn btn-enter float-right">ENTER</button> -->
             </form>
         </div>
-        
+        <br><br>
         {% if initScreen %}
         <p>Your sentence analysis will appear after you input some text</p>
         {% endif %}
-        <br>
 
 
         {% if not initScreen %}
@@ -179,7 +178,7 @@
                     fontFamily: "josefin-bold",
                     display: true,
                     text: 'Toxic',
-                    fontSize: 30,
+                    fontSize: 22,
                     position: "bottom",
                     margin: 10
                 },
@@ -227,7 +226,7 @@
                     fontFamily: "josefin-bold",
                     display: true,
                     text: 'Insult',
-                    fontSize: 30,
+                    fontSize: 22,
                     position: "bottom"
                 },
                 legend: {
@@ -274,7 +273,7 @@
                     fontFamily: "josefin-bold",
                     display: true,
                     text: 'Threat',
-                    fontSize: 30,
+                    fontSize: 22,
                     position: "bottom"
                 },
                 legend: {
@@ -321,7 +320,7 @@
                     fontFamily: "josefin-bold",
                     display: true,
                     text: 'Identity Attack',
-                    fontSize: 30,
+                    fontSize: 22,
                     position: "bottom"
                 },
                 legend: {
@@ -361,7 +360,7 @@
                 ],
                 datasets: [{
                     // categoryPercentage: 1,
-                    // barThickness: 30,
+                    // barThickness: 22,
                     barPercentage: 0.5,
                     data: [polarity, subjectivity],
                     backgroundColor: ["#B56576", "#97B565"],
@@ -373,6 +372,19 @@
                 type: 'horizontalBar',
                 data: MeSeData,
                 options: {
+                    tooltips: {
+                    enabled: true,
+                
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            console.log(data['datasets'][0]['data'])
+                            if(tooltipItem.yLabel == "Objective")
+                                return  "Subjectivity: " + data['datasets'][0]['data'][1];
+                            if(tooltipItem.yLabel == "Negative")
+                                return "Polarity: " + data['datasets'][0]['data'][0];
+
+                        }
+                    }},
                     responsive: false,
                     legend: {
                         display: false,
