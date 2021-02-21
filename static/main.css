@@ -1,14 +1,14 @@
-@font-face{
+@font-face {
   font-family: josefin-regular;
-  src: url('/fonts/JosefinSans-Regular.ttf');
+  src: url('/static/fonts/JosefinSans-Regular.ttf');
 }
-@font-face{
+@font-face {
   font-family: josefin-light;
-  src: url('/fonts/JosefinSans-Light.ttf');
+  src: url('/static/fonts/JosefinSans-Light.ttf');
 }
-@font-face{
+@font-face {
   font-family: josefin-bold;
-  src: url('/fonts/JosefinSans-Bold.ttf');
+  src: url('/static/fonts/JosefinSans-Bold.ttf');
 }
 
 /* Body Classes */
@@ -22,8 +22,15 @@
   text-align: left;
 }
 
-#page-title {
+#page-title{
   margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 32px;
+  line-height: 40px;
+  width: 567px;
+  text-align: center;
+  font-family: josefin-regular;
 }
 
 /* Input Relevant Classes */
@@ -54,16 +61,14 @@ body {
 }
 
 p{
-  font-family: "Josefin Sans";
-  font-style: normal;
-  font-weight: 300;
+  font-family: josefin-light;
   font-size: 16px;
   line-height: 28px;
+  margin-top: 41px;
+}
 
-  }
-
-  h1{
-    font-family: "Josefin Sans";
+h1{
+font-family: josefin-regular;
 font-style: normal;
 font-weight: normal;
 font-size: 32px;
@@ -71,35 +76,42 @@ line-height: 40px;
 /* or 125% */
 
 text-align: center;
-  }
-
-  .collapsible {
-    font-family: Josefin Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 24px;
-
-    color: #000000;
-    cursor: pointer;
-    padding: 18px;
-    width: 50%;
-    border: none;
-    text-align: left;
-    outline: none;
-    color: black;
-    border-bottom: 1px solid black;
 }
 
-.active, .collapsible:hover {
-content:"\f067";
-color: black;
-border-bottom: 1px solid black;
+.collapsible {
+  font-family: Josefin Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 24px;
+
+  color: #000000;
+  cursor: pointer;
+  padding: 18px;
+  width: 50%;
+  border: none;
+  text-align: left;
+  outline: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.active,
+.collapsible:hover {
+  content: "\f067";
+  color: black;
+  border-bottom: 1px solid black;
 }
 
 .content {
-padding: 18px;
-display: none;
-overflow: hidden;
+  padding: 18px;
+  display: none;
+  overflow: hidden;
+}
 
+label {
+  display: inline-block;
+  margin-right: 15;
+  margin-top: 15;
+  width: 15%;
 }

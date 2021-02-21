@@ -18,12 +18,23 @@ purpose: Take input from the JavaScript form.
 """
 @app.route('/nlp', methods = ['POST'])
 def nlp():
-   text = request.form['text']
-   sentimentValues = spacyFunctions(text)
-   emotionsValues = emotions(text)
-   perspectiveValues = perspectiveAPI(text)
-   # return redirect('/')
-   return render_template('index.html',  initScreen = False, sentimentValues=sentimentValues, emotionsValues = emotionsValues, perspectiveValues=perspectiveValues)
+    text = request.form['text']
+    perspectiveValues = perspectiveAPI(text)
+    emotionsValues = emotions(text)
+    sentimentValues = spacyFunctions(text)
+    # hateSonar(text)
+
+    print("sentimentValues:", sentimentValues)
+    print("emotionsValues:", emotionsValues)
+    print("perspectiveValues:", perspectiveValues)
+
+    # return redirect('/')
+    return render_template('index.html',  
+        initScreen = False, 
+        sentimentValues = sentimentValues, 
+        emotionsValues = emotionsValues, 
+        perspectiveValues  = perspectiveValues
+    )
 
 """
 purpose: Run server.
