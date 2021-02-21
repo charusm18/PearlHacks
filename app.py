@@ -7,7 +7,7 @@ purpose: Render our website pages.
 """
 @app.route('/')
 def home():
-   return render_template('index.html', initScreen = True)
+   return render_template('index.html', initScreen = True, sentimentValues={}, emotionsValues = {}, perspectiveValues={})
 
 @app.route('/test')
 def test():

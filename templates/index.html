@@ -16,6 +16,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
+
 <body class="d-flex flex-column">
     <div class="test-main" id="page-content">
         <h1 id="page-title">Does the intention of your message align with its impact?</h1>
@@ -35,7 +36,7 @@
         <button type="button" class="collapsible">Perspective</button>
         <div class="content">
                 <p>{{perspectiveValues}}</p>
-                <canvas id="myChart"></canvas>
+                <canvas id="toxicity" style = "width: 20%;"></canvas>
         </div>
         
         <button type="button" class="collapsible">Emotion</button>
@@ -98,7 +99,7 @@
             const threat = 100 *"{{perspectiveValues['threat'] | safe }}";
             const identity_attack = 100 * "{{perspectiveValues['identity_attack'] | safe }}";
 
-            let myChart = document.getElementById('myChart').getContext('2d');
+            let myChart = document.getElementById('toxicity').getContext('2d');
             Chart.defaults.global.defaultFontFamily = 'Lato';
             let toxicChart = new Chart(myChart, {
                 type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
