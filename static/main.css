@@ -79,6 +79,10 @@ p {
 }
 
 /* Textarea Input Space */
+#weight {
+  font-family: josefin-regular;
+}
+
 textarea {
   padding: 20px;
   border-radius: 20px;
@@ -90,7 +94,6 @@ textarea {
   min-height: 161px;
   font-size: 20px;
 
-  font-family: inherit;
   font-size: inherit;
 
   overflow: auto;
