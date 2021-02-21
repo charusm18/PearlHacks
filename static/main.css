@@ -12,7 +12,6 @@
 }
 
 /* Body Classes */
-
 .name_header {
   margin-right: auto;
 }
@@ -45,14 +44,6 @@
   font-family: josefin-regular;
 }
 
-/* Input Relevant Classes */
-textarea {
-  resize: vertical;
-  max-height: 500px;
-  min-height: 150px;
-  font-size: 40px;
-}
-
 /* Sticky Footer Classes */
 html,
 body {
@@ -78,38 +69,61 @@ p {
   line-height: 28px;
 }
 
+/* Description */
 #description {
-  font-family: josefin-light;
+  font-family: josefin-regular;
   font-size: 16px;
   line-height: 28px;
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-::-webkit-input-placeholder {
+/* Textarea Input Space */
+textarea {
+  padding: 20px;
+  border-radius: 20px;
+  width: 100%;
   font-family: josefin-regular;
-  font-size: 16px;
-  color: red;
+
+  resize: vertical;
+  max-height: 161px;
+  min-height: 161px;
+  font-size: 20px;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none; /*remove the resize handle on the bottom right*/
 }
 
-::-moz-placeholder {
+textarea::-webkit-input-placeholder {
+  color: #909090;
   font-family: josefin-regular;
-  font-size: 16px;
-  color: red;
 }
 
-::-ms-placeholder {
+textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: #909090;
   font-family: josefin-regular;
-  font-size: 16px;
-  color: red;
 }
 
-::placeholder {
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #909090;
   font-family: josefin-regular;
-  font-size: 16px;
-  color: red;
 }
 
+textarea:-ms-input-placeholder {
+  color: #909090;
+  font-family: josefin-regular;
+}
+
+/* Header */
 h1 {
   font-family: josefin-regular;
   font-style: normal;
@@ -121,10 +135,12 @@ h1 {
   text-align: center;
 }
 
+/* Scrollbar */
 html {
   overflow-y: scroll;
 }
 
+/* Collapsible CSS */
 .collapsible {
   font-family: Josefin Sans;
   font-style: normal;
