@@ -24,12 +24,13 @@ def perspectiveAPI(text):
     }
 
     response = service.comments().analyze(body=analyze_request).execute()
+    print(round(response['attributeScores']['THREAT']['summaryScore']['value'],4))
     return {
-          "toxicity": response['attributeScores']['TOXICITY']['summaryScore']['value'],
-          "insult": response['attributeScores']['INSULT']['summaryScore']['value'],
-          "profanity": response['attributeScores']['PROFANITY']['summaryScore']['value'],
-          "threat": response['attributeScores']['THREAT']['summaryScore']['value'],
-          "identity_attack": response['attributeScores']['IDENTITY_ATTACK']['summaryScore']['value']
+          "toxicity": round(response['attributeScores']['TOXICITY']['summaryScore']['value'],4),
+          "insult": round(response['attributeScores']['INSULT']['summaryScore']['value'],4),
+          "profanity": round(response['attributeScores']['PROFANITY']['summaryScore']['value'],4),
+          "threat": round(response['attributeScores']['THREAT']['summaryScore']['value'],4),
+          "identity_attack": round(response['attributeScores']['IDENTITY_ATTACK']['summaryScore']['value'], 4)
     }
   
 def spacyFunctions(text):
@@ -39,8 +40,8 @@ def spacyFunctions(text):
     doc = nlp(text)
 
     return { 
-        'polarity': doc._.sentiment.polarity, 
-        'subjectivity': doc._.sentiment.subjectivity,
+        'polarity': round(doc._.sentiment.polarity, 4), 
+        'subjectivity': round(doc._.sentiment.subjectivity,4),
         'assessments': doc._.sentiment.assessments
     }
  

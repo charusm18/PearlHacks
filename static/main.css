@@ -1,14 +1,14 @@
 @font-face {
   font-family: josefin-regular;
-  src: url('/static/fonts/JosefinSans-Regular.ttf');
+  src: url("/static/fonts/JosefinSans-Regular.ttf");
 }
 @font-face {
   font-family: josefin-light;
-  src: url('/static/fonts/JosefinSans-Light.ttf');
+  src: url("/static/fonts/JosefinSans-Light.ttf");
 }
 @font-face {
   font-family: josefin-bold;
-  src: url('/static/fonts/JosefinSans-Bold.ttf');
+  src: url("/static/fonts/JosefinSans-Bold.ttf");
 }
 
 /* Body Classes */
@@ -34,7 +34,7 @@
   text-align: left;
 }
 
-#page-title{
+#page-title {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -72,7 +72,7 @@ body {
   background: #ffffff;
 }
 
-p{
+p {
   font-family: josefin-light;
   font-size: 16px;
   line-height: 28px;
@@ -110,15 +110,19 @@ p{
   color: red;
 }
 
-h1{
-font-family: josefin-regular;
-font-style: normal;
-font-weight: normal;
-font-size: 32px;
-line-height: 40px;
-/* or 125% */
+h1 {
+  font-family: josefin-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 40px;
+  /* or 125% */
 
-text-align: center;
+  text-align: center;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 .collapsible {
@@ -150,4 +154,15 @@ text-align: center;
   padding: 18px;
   display: none;
   overflow: hidden;
+}
+
+/* Charts */
+canvas {
+  margin: 0 auto;
+}
+label {
+  display: inline-block;
+  margin-right: 15;
+  margin-top: 15;
+  width: 15%;
 }

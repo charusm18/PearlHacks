@@ -41,16 +41,33 @@
         {% if not initScreen %}
         <button type="button" class="collapsible">Perspective</button>
         <div class="content">
-                <canvas id="toxicity" style="display: inline-block"></canvas>
-                <canvas id="insult" style="display: inline-block"></canvas>
-                <canvas id="threat" style="display: inline-block"></canvas>
-                <canvas id="identity_attack" style="display: inline-block"></canvas>
+            <label style = "display: inline-block;">                  
+                <canvas id="toxicity" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> A rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion. 
+                The likelihood that someone will perceive your message as toxic is {{(perspectiveValues['toxicity'] * 100)|int}}%. </p>
+               
+            </label>
+            <label style = "display: inline-block;">                  
+                <canvas id="insult" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> An inflammatory or negative comment towards a person or a group of people that can offend. 
+                    The likelihood that someone will perceive your message as insulting is {{(perspectiveValues['insult'] * 100)|int}}%.<br> </p>
+            </label>                
+            
+            <label style = "display: inline-block;">                  
+                <canvas id="threat" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> An intention to inflict pain, injury, or violence against an individual or group. 
+                    The likelihood that someone will perceive your message as threatening is {{(perspectiveValues['threat'] * 100)|int}}%.  </p>
+            </label>  
+            <label style = "display: inline-block;">                  
+                <canvas id="identity_attack" style="width: 70%; display: inline-block; position: relative;"></canvas>
+                <p> A negative or hateful comment targeting someone because of their identity. 
+                    The likelihood that someone will perceive your message as an attack on their identity is {{(perspectiveValues['identity_attack'] * 100)|int}}%.  </p>
+            </label>          
         </div>
         
         <button type="button" class="collapsible">Emotion</button>
         <div class="content">
-            <p>{{emotionsValues}}</p>
-            <canvas id="emotion" style = "width: 350px; height: 350px;"></canvas>
+            <canvas id="emotion" style = "width: 520px; height: 455px;"></canvas>
         </div>
 
         <button type="button" class="collapsible">Sentiment</button>
@@ -123,22 +140,20 @@
                         toxicity, 100- toxicity
                     ],
                     backgroundColor: [
-                        'green',
-                        'red'
-                    ],
-                    borderWidth: 1,
-                    borderColor: '#777',
-                    hoverBorderWidth: 3,
-                    hoverBorderColor: 'black'
+                        "#355070",
+                        '#C6D0DC'
+                    ]
                 }]
             },
             options:{
                 aspectRatio: 1,
                 responsive: false,
                 title: {
+                    fontFamily: "josefin-bold",
                     display: true,
-                    text: 'Toxicity',
-                    fontSize: 25,
+                    text: 'Toxic',
+                    fontSize: 40,
+                    position: "bottom"
                 },
                 legend: {
                     display: false,
@@ -164,29 +179,27 @@
         let insultChart = new Chart(iChart, {
             type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
             data: {
-                labels:['Insulting', 'Not Insulting'],
+                labels:['Insult', 'Not an insult'],
                 datasets:[ {
                     label: 'Percentage',
                     data: [
                         insult, 100- insult
                     ],
                     backgroundColor: [
-                        'green',
-                        'red'
-                    ],
-                    borderWidth: 1,
-                    borderColor: '#777',
-                    hoverBorderWidth: 3,
-                    hoverBorderColor: 'black'
+                        '#584770',
+                        '#DCD5E6'
+                    ]
                 }]
             },
             options:{
                 aspectRatio: 1,
                 responsive: false,
                 title: {
+                    fontFamily: "josefin-bold",
                     display: true,
                     text: 'Insult',
-                    fontSize: 25,
+                    fontSize: 40,
+                    position: "bottom"
                 },
                 legend: {
                     display: false,
@@ -219,22 +232,20 @@
                         threat, 100- threat
                     ],
                     backgroundColor: [
-                        'green',
-                        'red'
-                    ],
-                    borderWidth: 1,
-                    borderColor: '#777',
-                    hoverBorderWidth: 3,
-                    hoverBorderColor: 'black'
+                        '#B56576',
+                        '#E7D8DB'
+                    ]
                 }]
             },
             options:{
                 aspectRatio: 1,
                 responsive: false,
                 title: {
+                    fontFamily: "josefin-bold",
                     display: true,
                     text: 'Threat',
-                    fontSize: 25,
+                    fontSize: 40,
+                    position: "bottom"
                 },
                 legend: {
                     display: false,
@@ -260,29 +271,27 @@
         let identityChart = new Chart(idChart, {
             type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
             data: {
-                labels:['Identity Attack', 'Not an Identity Attack'],
+                labels:['Identity Attack', 'Not a idenity attack'],
                 datasets:[ {
                     label: 'Percentage',
                     data: [
                         identity_attack, 100- identity_attack
                     ],
                     backgroundColor: [
-                        'green',
-                        'red'
-                    ],
-                    borderWidth: 1,
-                    borderColor: '#777',
-                    hoverBorderWidth: 3,
-                    hoverBorderColor: 'black'
+                        '#EAAC8B',
+                        '#EBE8E6'
+                    ]
                 }]
             },
             options:{
                 aspectRatio: 1,
                 responsive: false,
                 title: {
+                    fontFamily: "josefin-bold",
                     display: true,
                     text: 'Identity Attack',
-                    fontSize: 25,
+                    fontSize: 40,
+                    position: "bottom"
                 },
                 legend: {
                     display: false,
@@ -303,12 +312,8 @@
                 tooltips: { // hover thing
                     enabled: true
                 }
-            },
-            tooltips: { // hover thing
-                enabled: true
             }
-        }
-    );
+        });
     </script>
 
     <!-- Emotion Radar Chart -->
