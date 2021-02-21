@@ -26,10 +26,11 @@
         <h1 id="page-title">Does the intention of your message align with its impact?</h1>
         <div class="test">
             <p id="description">Type your message into the text box below to see how others might interpret your message based on its toxicity, emotional tone, and other attributes.</p>
-            <form method="post" action="/nlp" my-form>
+            <form method="post" action="/analysis" my-form>
                 <div >
                     <textarea placeholder="Type here to see the impact of your message." name="text" id="weight"></textarea>
                 </div>
+                <br>
                 <div id="button-holder">
                     <button id="weight" class="submit-button" type="submit">ENTER</button>
                 </div>
@@ -40,12 +41,12 @@
         {% if initScreen %}
         <p>Your sentence analysis will appear after you input some text</p>
         {% endif %}
-        <br><br>
+        <br>
 
 
         {% if not initScreen %}
-        <button type="button" class="collapsible">Perspective</button>
-        <div class="content">
+        <button type="button" class="collapsible" >Perspective</button>
+        <div class="content" style = "display: block;">
             <label class="inner" style = "display: inline-block;">                  
                 <canvas id="toxicity" style="width: 70%; display: inline-block; position: relative;"></canvas>
                 <p> A rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion. 
@@ -331,56 +332,70 @@
         });
     </script>
 
-<script>
-        const polarity =  "{{sentimentValues['polarity'] | safe }}";
-        const subjectivity = "{{sentimentValues['subjectivity'] | safe }}";
+    <!-- Sentiment charts -->
+    <script>
+            const polarity =  "{{sentimentValues['polarity'] | safe }}";
+            const subjectivity = "{{sentimentValues['subjectivity'] | safe }}";
 
-        var MeSeContext = document.getElementById("sentiment").getContext("2d");
-        var MeSeData = {
-            labels: [
-                "Polarity",
-                "Subjectivity"
-            ],
-            datasets: [{
-                // categoryPercentage: 1,
-                // barThickness: 30,
-                barPercentage: 0.5,
-                data: [polarity, subjectivity],
-                backgroundColor: ["#B56576", "#97B565"],
-                hoverBackgroundColor: ["#BE3855", "#93BE38"]
-            }]
-        };
+            var MeSeContext = document.getElementById("sentiment").getContext("2d");
+            var MeSeData = {
+                labels: [
+                    "Negative",
+                    "Objective"
+                ],
+                datasets: [{
+                    // categoryPercentage: 1,
+                    // barThickness: 30,
+                    barPercentage: 0.5,
+                    data: [polarity, subjectivity],
+                    backgroundColor: ["#B56576", "#97B565"],
+                    hoverBackgroundColor: ["#BE3855", "#93BE38"]
+                }]
+            };
 
-        var MeSeChart = new Chart(MeSeContext, {
-            type: 'horizontalBar',
-            data: MeSeData,
-            options: {
-                responsive: false,
-                legend: {
-                    display: false,
-                    position: 'right',
-                    labels: {
-                        fontColor: 'black'
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        categorySpacing: 0,
-                        stacked: true,
-                        ticks: {
-                            min: -1,
-                            max: 1
+            var MeSeChart = new Chart(MeSeContext, {
+                type: 'horizontalBar',
+                data: MeSeData,
+                options: {
+                    responsive: false,
+                    legend: {
+                        display: false,
+                        position: 'right',
+                        labels: {
+                            fontColor: 'black'
                         }
-                    }],
-                    yAxes: [{
-                        stacked: true,
-                        categorySpacing: 0
-                    }]
-                }
+                    },
+                    scales: {
+                        xAxes: [{
+                            categorySpacing: 0,
+                            stacked: true,
+                            ticks: {
+                                min: -1,
+                                max: 1
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: true,
+                            categorySpacing: 0
+                        }, {
+                        type: 'category',
+                        labels: [
+                            "Subjective", "Positive",
+                        ],
+                        position: 'right',
+                        offset: true,
+                        ticks: {
+                            reverse: true,
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                        }]
+                    }
 
-            }
-        });
-</script>
+                }
+            });
+    </script>
 
     <!-- Emotion Radar Chart -->
     <script>

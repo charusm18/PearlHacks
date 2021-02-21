@@ -16,8 +16,8 @@ def test():
 """
 purpose: Take input from the JavaScript form.
 """
-@app.route('/nlp', methods = ['POST'])
-def nlp():
+@app.route('/analysis', methods = ['POST'])
+def analysis():
     text = request.form['text']
     perspectiveValues = perspectiveAPI(text)
     emotionsValues = emotions(text)
