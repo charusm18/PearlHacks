@@ -246,7 +246,7 @@ html {
   height: 40px;
   line-height: 40px;
   width: 20px;
-  transition: all .4s ease-in-out;
+  /* transition: all .4s ease-in-out; */
   display: inline-block;
 }
 
@@ -258,7 +258,7 @@ html {
   display: block;
   font-weight: bold;
   height: 20px;
-  transition: all .4s ease-in-out;
+  /* transition: all .4s ease-in-out; */
 }
 
  .collapsible-text{
@@ -299,6 +299,7 @@ html {
   content: "\f067";
   color: #B56576;
   border-bottom: 1px solid black;
+  transition: 0.4s ease-in-out;
 }
 
 .collapsible:focus{
