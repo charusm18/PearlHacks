@@ -47,8 +47,8 @@
 
         {% if not initScreen %}
         
-        <button type="button" class="collapsible">
-            <div class="plus"><span class="add">
+        <button type="button" class="collapsible" id ='c'>
+            <div class="plus"><span class="add" id = "col" >
             <i class="fas fa-plus"></i></span></div> Perspective
         </button>
         <div class="content">
@@ -73,8 +73,11 @@
                     The likelihood that someone will perceive your message as an attack on their identity is {{(perspectiveValues['identity_attack'] * 100)|int}}%.  </p>
             </label>          
         </div>
-        <button type="button" class="collapsible">
-            <div class="plus"><span class="add">
+
+
+        
+        <button type="button" class="collapsible" id ='c1'>
+            <div class="plus"><span class="add" id = "col1">
             <i class="fas fa-plus"></i></span></div> Emotion
         </button>
         <!-- <button type="button" class="collapsible">Emotion</button> -->
@@ -82,8 +85,8 @@
             <canvas id="emotion" style = "width: 520px; height: 455px;"></canvas>
         </div>
 
-        <button type="button" class="collapsible">
-            <div class="plus"><span class="add">
+        <button type="button" class="collapsible" id =c2>
+            <div class="plus"><span class="add" id = "col2">
             <i class="fas fa-plus"></i></span></div> Sentiment
         </button>
         <!-- <button type="button" class="collapsible">Sentiment</button> -->
@@ -118,11 +121,11 @@
             coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
+                if (content.style.maxHeight){
+                content.style.maxHeight = null;
                 } else {
-                    content.style.display = "block";
-                }
+                content.style.maxHeight = content.scrollHeight + "px";
+                } 
             });
         }
     </script>

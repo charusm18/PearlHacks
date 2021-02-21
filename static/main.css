@@ -224,7 +224,7 @@ html {
 }
 
 /* Collapsible CSS */
-.collapsible {
+.collapsible{
   font-family: josefin-regular;
   font-style: normal;
   font-weight: normal;
@@ -261,7 +261,7 @@ html {
   transition: all .4s ease-in-out;
 }
 
-.collapsible-text{
+ .collapsible-text{
   font-family: josefin-regular;
   font-style: normal;
   font-weight: normal;
@@ -277,21 +277,25 @@ html {
   color: #584770;
   border-bottom: 1px solid black;
 }
-.active,
-.collapsible:hover {
-  content: "\f067";
-  color: #B56576;
-  border-bottom: 1px solid black;
-}
-.collapsible:focus {
-  outline:0;
+
+.collapsible:after {
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
 }
 
 .content {
-  padding: 18px;
-  display: none;
+  padding: 0 18px;
+  max-height: 0;
   overflow: hidden;
+  transition: max-height 0.3s ease-out;
   margin-top: 30px;
+
+}
+
+.collapsible:focus{
+  outline:0;
 }
 
 /* Charts */
