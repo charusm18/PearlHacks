@@ -21,7 +21,7 @@
 
 <body class="d-flex flex-column">
     <div class="header">
-        <a href="/"><img class="logo" src="/static/images/mirror_logo1_final.svg" alt="logo"></a>
+        <a href="/analysis"><img class="logo" src="/static/images/mirror_logo1_final.svg" alt="logo"></a>
     </div>
     <div class="test-main" id="page-content">
         <h1 id="page-title">Does the intention of your message align with its impact?</h1>
@@ -29,7 +29,7 @@
             <p id="description">Type your message into the text box below to see how others might interpret your message based on its toxicity, emotional tone, and other attributes.</p>
             <form method="post" action="/analysis" my-form>
                 <div >
-                    <textarea placeholder="Type here to see the impact of your message." name="text" id="weight"></textarea>
+                    <textarea value="{{ text }}" placeholder="Type here to see the impact of your message." name="text" id="weight" required> {{ text }}</textarea>
                 </div>
                 <br>
                 <div id="button-holder">
@@ -142,7 +142,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script> 
 
-    <!-- perspectives charts -->
+    <!-- Perspectives charts -->
     <script>
         let toxicity = (100 * "{{perspectiveValues['toxicity'] | safe }}").toFixed(2);
         let insult = (100 *"{{perspectiveValues['insult'] | safe }}").toFixed(2);
