@@ -36,7 +36,6 @@ regex==2020.11.13
 requests==2.25.1
 rsa==4.7.1
 scikit-learn==0.24.1
-scipy==1.6.1
 six==1.15.0
 spacy==2.3.5
 spacytextblob==0.1.7
