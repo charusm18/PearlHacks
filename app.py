@@ -7,7 +7,7 @@ purpose: Render our website pages.
 """
 @app.route('/')
 def home():
-   return render_template('index.html')
+   return render_template('index.html', initScreen = True)
 
 @app.route('/test')
 def test():
@@ -18,18 +18,21 @@ purpose: Take input from the JavaScript form.
 """
 @app.route('/nlp', methods = ['POST'])
 def nlp():
-    text = request.form['text']
-    print("text:", request.form['text']) # debug: check our form input was received correctly
-    print(spacyFunctions(text))
-    print(emotions(text))
-    print(perspectiveAPI(text))
-    # hateSonar(text)
-    # return redirect('/')
-    return jsonify(perspectiveAPI(text))
+   text = request.form['text']
+   sentimentValues = spacyFunctions(text)
+   emotionsValues = emotions(text)
+   perspectiveValues = perspectiveAPI(text)
+   # hateSonar(text)
+   print(sentimentValues)
+   print(emotionsValues)
+   print(perspectiveValues)
+
+   # return redirect('/')
+   return render_template('index.html',  initScreen = False, sentimentValues=sentimentValues, emotionsValues = emotionsValues, perspectiveValues=perspectiveValues)
 
 """
 purpose: Run server.
 """
 if __name__ == '__main__':
-   app.run()
+   app.run(debug=True)
    

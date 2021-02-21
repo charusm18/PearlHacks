@@ -32,7 +32,36 @@
             </form>
         </div>
         <p>NLP Analyses Results go here.</p>
-        <pre data-preview></pre>
+
+        <p>Collapsible Set:</p>
+        <button type="button" class="collapsible">Perspective</button>
+        <div class="content">
+            {% if initScreen %}
+                <p>No content yet. Please type in some text to continue!</p>
+            {%else%}
+                <p>{{perspectiveValues}}</p>
+            {% endif %}        
+        </div>
+        
+        <button type="button" class="collapsible">Emotion</button>
+        <div class="content">
+            {% if initScreen %}
+            <p>No content yet. Please type in some text to continue!</p>
+            {%else%}
+                <p>{{emotionsValues}}</p>
+            {% endif %}        
+        </div>
+
+        <button type="button" class="collapsible">Sentiment</button>
+        <div class="content">
+            {% if initScreen %}
+            <p>No content yet. Please type in some text to continue!</p>
+            {%else%}
+                <p>{{sentimentValues}}</p>
+            {% endif %}           
+        </div>
+
+
     </div> <!-- End page content-->
 
 
@@ -46,41 +75,21 @@
 
     <!-- Scripts -->
     <script>
-        var data;
-
-        // Listen on the form and wait for submission.
-        // On submission, make a POST request with fetch to analyze the data in Flask.
-        window.addEventListener('DOMContentLoaded', init);
-
-        function init() {
-            const form = document.querySelector('[my-form]');
-            const textInput = document.querySelector('[name=text]');
-            const preview = document.querySelector('[data-preview]');
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-
-                const text = textInput.value;
-                const results = await fetchData(text);
-                preview.textContent = JSON.stringify(results, null, 4);
-                data = results;
-                console.log(data);
-            });
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
         }
-
-        // This makes the post request.
-        async function fetchData(text) {
-            const payload = new FormData();
-            payload.append('text', text);
-
-            const res = await fetch('/nlp', {
-                method: 'post',
-                body: payload
-            });
-            const data = await res.json();
-            return data;
-        }
-    </script>
+        </script>
 
 
     <!-- Scripts from outside -->
