@@ -64,8 +64,11 @@ let emotionChart = new Chart(ctx, {
                 top: 0
             }
         },
-        tooltips: { // hover thing
-            enabled: true
+        tooltips: { // thing that shows up when you hover
+            enabled: true,
+            callbacks: {
+                title: (tooltipItem, data) => data.labels[tooltipItem[0].index]
+            }
         },
         responsive: false
     }
