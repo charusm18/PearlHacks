@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Import scripts and stylesheets: keep in <static> -->
-    <script src="../static/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <link rel="stylesheet" href="../static/main.css">
 
@@ -30,19 +29,24 @@
                 <button type="submit" class="btn btn-dark">Submit</button>
             </form>
         </div>
-        <p>NLP Analysis will appear after you input some text</p>
+        {% if initScreen %}
+        <p>Your sentence analysis will appear after you input some text</p>
+        {% endif %}
+
 
         {% if not initScreen %}
         <button type="button" class="collapsible">Perspective</button>
         <div class="content">
-            <p>{{perspectiveValues}}</p>
-            <canvas id="toxicity" style = "width: 520px;"></canvas>
+                <canvas id="toxicity" style="display: inline-block"></canvas>
+                <canvas id="insult" style="display: inline-block"></canvas>
+                <canvas id="threat" style="display: inline-block"></canvas>
+                <canvas id="identity_attack" style="display: inline-block"></canvas>
         </div>
         
         <button type="button" class="collapsible">Emotion</button>
         <div class="content">
             <p>{{emotionsValues}}</p>
-            <canvas id="emotion" style = "width: 520px;"></canvas>
+            <canvas id="emotion" style = "width: 350px; height: 350px;"></canvas>
         </div>
 
         <button type="button" class="collapsible">Sentiment</button>
@@ -95,13 +99,17 @@
     <script>
         const toxicity = 100 * "{{perspectiveValues['toxicity'] | safe }}";
         const insult = 100 *"{{perspectiveValues['insult'] | safe }}";
-        const profanity = 100 *"{{perspectiveValues['profanity'] | safe }}";
         const threat = 100 *"{{perspectiveValues['threat'] | safe }}";
         const identity_attack = 100 * "{{perspectiveValues['identity_attack'] | safe }}";
 
-        let myChart = document.getElementById('toxicity').getContext('2d');
+        let tChart = document.getElementById('toxicity').getContext('2d');
+        let iChart = document.getElementById('insult').getContext('2d');
+        let thChart = document.getElementById('threat').getContext('2d');
+        let idChart = document.getElementById('identity_attack').getContext('2d');
+
+
         Chart.defaults.global.defaultFontFamily = 'Lato';
-        let toxicChart = new Chart(myChart, {
+        let toxicChart = new Chart(tChart, {
             type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
             data: {
                 labels:['Toxic', 'Not toxic'],
@@ -121,10 +129,12 @@
                 }]
             },
             options:{
+                aspectRatio: 1,
+                responsive: false,
                 title: {
                     display: true,
                     text: 'Toxicity',
-                    fontSize: 25
+                    fontSize: 25,
                 },
                 legend: {
                     display: false,
@@ -135,98 +145,179 @@
                 },
                 layout: {
                     padding: {
-                        left: 50,
+                        left: 0,
                         right: 0,
                         bottom: 0,
                         top: 0
-                    }
+                    },
+                    display: "inline-block"
                 },
                 tooltips: { // hover thing
                     enabled: true
                 }
             }
         });
-    </script>
-
-    <!-- Emotion Radar Trial Script -->
-    <!-- https://www.chartjs.org/docs/latest/charts/radar.html -->
-    <script>
-        let ctx = document.getElementById('emotion').getContext('2d');
-
-        // Data Variables (from Flask)
-        let  happyValue = 10 * "{{emotionsValues['Happy'] | safe }}"
-        let angryValue = 10 * "{{emotionsValues['Angry'] | safe }}"
-        let surpriseValue = 10 * "{{emotionsValues['Surprise'] | safe }}"
-        let sadValue = 10 * "{{emotionsValues['Sad'] | safe }}"
-        let fearValue = 10 * "{{emotionsValues['Fear'] | safe }}"
-        let myData = [happyValue, angryValue, surpriseValue, sadValue, fearValue]
-        console.log(myData)
-        console.log(typeof(myData[0]))
-
-        // Global Options
-        Chart.defaults.global.defaultFontFamily = 'Lato';
-        
-        // Aesthetic Variables
-        const myLabels = ['Happy', 'Angry', 'Surprise', 'Sad', 'Fear']
-        const myColors = ['pink', 'yellow', 'blue', 'green', 'purple']
-
-        let emotionChart = new Chart(ctx, {
-            type: 'radar', // bar, horizontalBar, pie, line, donut, radar, polarArea
+        let insultChart = new Chart(iChart, {
+            type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
             data: {
-                labels: myLabels,
-                datasets: [{
-                    label: 'Scale: 1-10',
-                    data: myData,
-                    backgroundColor: myColors,
-                    borderWidth: 3,
-                    borderColor: 'black',
+                labels:['Insulting', 'Not Insulting'],
+                datasets:[ {
+                    label: 'Percentage',
+                    data: [
+                        insult, 100- insult
+                    ],
+                    backgroundColor: [
+                        'green',
+                        'red'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
                     hoverBorderWidth: 3,
                     hoverBorderColor: 'black'
                 }]
             },
-            options: {
+            options:{
+                aspectRatio: 1,
+                responsive: false,
                 title: {
                     display: true,
-                    text: 'Emotion',
-                    fontSize: 25
+                    text: 'Insult',
+                    fontSize: 25,
                 },
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'right',
                     labels: {
                         fontColor: 'black'
                     }
                 },
-                scale: {
-                    angleLines: {
-                        display: false
-                    },
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 10
-                    }
-                },
                 layout: {
                     padding: {
-                        left: 50,
+                        left: 0,
                         right: 0,
                         bottom: 0,
                         top: 0
-                    }
+                    },
+                    display: "inline-block"
                 },
                 tooltips: { // hover thing
                     enabled: true
                 }
             }
         });
+        let threatChart = new Chart(thChart, {
+            type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
+            data: {
+                labels:['Threat', 'Not a threat'],
+                datasets:[ {
+                    label: 'Percentage',
+                    data: [
+                        threat, 100- threat
+                    ],
+                    backgroundColor: [
+                        'green',
+                        'red'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: 'black'
+                }]
+            },
+            options:{
+                aspectRatio: 1,
+                responsive: false,
+                title: {
+                    display: true,
+                    text: 'Threat',
+                    fontSize: 25,
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    },
+                    display: "inline-block"
+                },
+                tooltips: { // hover thing
+                    enabled: true
+                }
+            }
+        });
+        let identityChart = new Chart(idChart, {
+            type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
+            data: {
+                labels:['Identity Attack', 'Not an Identity Attack'],
+                datasets:[ {
+                    label: 'Percentage',
+                    data: [
+                        identity_attack, 100- identity_attack
+                    ],
+                    backgroundColor: [
+                        'green',
+                        'red'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: 'black'
+                }]
+            },
+            options:{
+                aspectRatio: 1,
+                responsive: false,
+                title: {
+                    display: true,
+                    text: 'Identity Attack',
+                    fontSize: 25,
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    },
+                    display: "inline-block"
+                },
+                tooltips: { // hover thing
+                    enabled: true
+                }
+            },
+            tooltips: { // hover thing
+                enabled: true
+            }
+        }
+    );
     </script>
 
-
-
-
-
-
-
+    <!-- Emotion Radar Chart -->
+    <script>
+        // Data Variables (from Flask)
+        var happyValue = (10 * "{{emotionsValues['Happy'] | safe }}").toFixed(2)
+        var angryValue = (10 * "{{emotionsValues['Angry'] | safe }}").toFixed(2)
+        var surpriseValue = (10 * "{{emotionsValues['Surprise'] | safe }}").toFixed(2)
+        var sadValue = (10 * "{{emotionsValues['Sad'] | safe }}").toFixed(2)
+        var fearValue = (10 * "{{emotionsValues['Fear'] | safe }}").toFixed(2)
+        var myData = [happyValue, angryValue, surpriseValue, sadValue, fearValue]
+    </script>
+    <script src="../static/main.js"></script>
 
 
 
