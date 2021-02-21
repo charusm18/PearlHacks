@@ -25,15 +25,19 @@
 
 .test-main {
   text-align: center;
+  
 }
 
 .test {
   width: 50%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
+  /* margin-bottom: 50px; */
 }
 
 #page-title {
+  color: #584770;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -83,6 +87,28 @@ p {
   font-family: josefin-regular;
 }
 
+#weight2 {
+  font-family: josefin-bold;
+}
+
+.submit-button {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  padding: 5px;
+  margin-top: 11px;
+  text-align: center;
+  width: 98px;
+  background-color: #584770;
+  border: none;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+
+#button-holder {
+  vertical-align: middle;
+  text-align: right;
+}
+
 textarea {
   padding: 20px;
   border-radius: 20px;
@@ -126,7 +152,27 @@ textarea:-ms-input-placeholder {
   font-family: josefin-regular;
 }
 
-/* Header */
+.btn-enter {
+  background-color: #714F72;
+  color: white;
+  font-family: josefin-regular;
+  letter-spacing: 3px;
+  font-size: 14px;
+  padding-left: 19px;
+  padding-right: 19px;
+  padding-top: 14px;
+  padding-bottom: 9px;
+}
+
+.btn-enter:hover,
+.btn-enter:active,
+.btn-enter:focus,
+.btn-enter.active {
+  /* let's darken #004E64 a bit for hover effect */
+  background: #584770;
+  color: #ffffff;
+}
+
 h1 {
   font-family: josefin-regular;
   font-style: normal;
