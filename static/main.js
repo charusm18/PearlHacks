@@ -5,7 +5,7 @@
 let ctx = document.getElementById('emotion').getContext('2d');
 
 // Global Options
-Chart.defaults.global.defaultFontFamily = 'Lato';
+Chart.defaults.global.defaultFontFamily = "'josefin-regular'";
 
 // Aesthetic Variables
 const myLabels = ['Happy', 'Angry', 'Surprise', 'Sad', 'Fear']
@@ -16,18 +16,21 @@ let emotionChart = new Chart(ctx, {
     data: {
         labels: myLabels,
         datasets: [{
-            label: 'Scale: 1-10',
+            label: 'Intensity',
             data: myData,
-            backgroundColor: myColors,
-            borderWidth: 3,
-            borderColor: 'black',
+            borderWidth: 2,
+            backgroundColor: "rgba(200,0,0,0.2)",
+            borderColor: '#B56576',
             hoverBorderWidth: 3,
-            hoverBorderColor: 'black'
+            hoverBorderColor: '#B56576',
+            hoverRadius: 10,
+            pointHitRadius: 15,
+            pointHoverBackgroundColor: 'white'
         }]
     },
     options: {
         title: {
-            display: true,
+            display: false,
             text: 'Emotion',
             fontSize: 25
         },
@@ -44,7 +47,13 @@ let emotionChart = new Chart(ctx, {
             },
             ticks: {
                 suggestedMin: 0,
-                suggestedMax: 10
+                suggestedMax: 10,
+                fontSize: 10,
+                stepSize: 1,
+                showLabelBackdrop: false
+            },
+            pointLabels: {
+                fontSize: 22
             }
         },
         layout: {
@@ -58,6 +67,6 @@ let emotionChart = new Chart(ctx, {
         tooltips: { // hover thing
             enabled: true
         },
-        responsive: false,
+        responsive: false
     }
 });
