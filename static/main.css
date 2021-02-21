@@ -1,3 +1,16 @@
+@font-face{
+  font-family: josefin-regular;
+  src: url('/fonts/JosefinSans-Regular.ttf');
+}
+@font-face{
+  font-family: josefin-light;
+  src: url('/fonts/JosefinSans-Light.ttf');
+}
+@font-face{
+  font-family: josefin-bold;
+  src: url('/fonts/JosefinSans-Bold.ttf');
+}
+
 /* Body Classes */
 .test-main {
   text-align: center;
