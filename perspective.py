@@ -39,12 +39,14 @@ def spacyFunctions(text):
     nlp.add_pipe(spacy_text_blob)
     doc = nlp(text)
 
-    
+    important_words = []
+    for i in doc._.sentiment.assessments:
+        important_words.extend(i[0])
 
     return { 
         'polarity': round(doc._.sentiment.polarity, 4), 
         'subjectivity': round(doc._.sentiment.subjectivity,4),
-        'assessments': doc._.sentiment.assessments
+        'assessments': important_words
     }
  
 def emotions(text):

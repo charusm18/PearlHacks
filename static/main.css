@@ -185,6 +185,25 @@ h1 {
   text-align: center;
 }
 
+h2{
+  font-family: josefin-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 22px;
+  margin-left: 15px;
+}
+
+.rectangle{
+  background-color: #E2E2E2;
+  border-radius: 7px;
+  font-family:  josefin-regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 20px;
+}
+
 /* Scrollbar */
 html {
   overflow-y: scroll;
@@ -206,6 +225,7 @@ html {
   outline: none;
   color: #584770;
   border-bottom: 1px solid black;
+  margin-bottom: 15px;
 }
 
 .plus{
@@ -262,6 +282,7 @@ html {
 /* Charts */
 canvas {
   margin: 0 auto;
+  width: 50%
 }
 
 label {
