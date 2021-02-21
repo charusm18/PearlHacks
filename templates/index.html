@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Import scripts and stylesheets: keep in <static> -->
+    <script src="https://kit.fontawesome.com/84c679d41a.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <link rel="stylesheet" href="../static/main.css">
 
@@ -42,7 +43,11 @@
 
 
         {% if not initScreen %}
-        <button type="button" class="collapsible">Perspective</button>
+        
+        <button type="button" class="collapsible">
+            <div class="plus"><span class="add">
+            <i class="fas fa-plus"></i></span></div> Perspective
+        </button>
         <div class="content">
             <label class="inner" style = "display: inline-block;">                  
                 <canvas id="toxicity" style="width: 70%; display: inline-block; position: relative;"></canvas>
@@ -65,13 +70,20 @@
                     The likelihood that someone will perceive your message as an attack on their identity is {{(perspectiveValues['identity_attack'] * 100)|int}}%.  </p>
             </label>          
         </div>
-        
-        <button type="button" class="collapsible">Emotion</button>
+        <button type="button" class="collapsible">
+            <div class="plus"><span class="add">
+            <i class="fas fa-plus"></i></span></div> Emotion
+        </button>
+        <!-- <button type="button" class="collapsible">Emotion</button> -->
         <div class="content">
             <canvas id="emotion" style = "width: 520px; height: 455px;"></canvas>
         </div>
 
-        <button type="button" class="collapsible">Sentiment</button>
+        <button type="button" class="collapsible">
+            <div class="plus"><span class="add">
+            <i class="fas fa-plus"></i></span></div> Sentiment
+        </button>
+        <!-- <button type="button" class="collapsible">Sentiment</button> -->
         <div class="content">
             <canvas id="polarity" style="width: 520px; height: 455px; display: inline-block"></canvas>
 
