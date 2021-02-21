@@ -294,6 +294,13 @@ html {
 
 }
 
+.active,
+.collapsible:hover {
+  content: "\f067";
+  color: #B56576;
+  border-bottom: 1px solid black;
+}
+
 .collapsible:focus{
   outline:0;
 }
