@@ -26,15 +26,19 @@
 
 .test-main {
   text-align: center;
+  
 }
 
 .test {
   width: 50%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
+  /* margin-bottom: 50px; */
 }
 
 #page-title {
+  color: #584770;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -108,6 +112,27 @@ p {
   font-family: josefin-regular;
   font-size: 16px;
   color: red;
+}
+
+.btn-enter {
+  background-color: #714F72;
+  color: white;
+  font-family: josefin-regular;
+  letter-spacing: 3px;
+  font-size: 14px;
+  padding-left: 19px;
+  padding-right: 19px;
+  padding-top: 14px;
+  padding-bottom: 9px;
+}
+
+.btn-enter:hover,
+.btn-enter:active,
+.btn-enter:focus,
+.btn-enter.active {
+  /* let's darken #004E64 a bit for hover effect */
+  background: #584770;
+  color: #ffffff;
 }
 
 h1 {
