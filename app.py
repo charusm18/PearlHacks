@@ -35,6 +35,6 @@ def analysis():
 purpose: Run server.
 """
 if __name__ == '__main__':
-   app.set( 'port', ( process.env.PORT || 5000 ));
-   app.run(threaded=True, port=5000)
+   port = int(os.environ.get('PORT', 33507))
+   app.run(debug=True, port=33507)
    
