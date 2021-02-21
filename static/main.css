@@ -1,12 +1,12 @@
-@font-face{
+@font-face {
   font-family: josefin-regular;
   src: url('/static/fonts/JosefinSans-Regular.ttf');
 }
-@font-face{
+@font-face {
   font-family: josefin-light;
   src: url('/static/fonts/JosefinSans-Light.ttf');
 }
-@font-face{
+@font-face {
   font-family: josefin-bold;
   src: url('/static/fonts/JosefinSans-Bold.ttf');
 }
@@ -96,15 +96,15 @@ text-align: center;
   border-bottom: 1px solid black;
 }
 
-.active, .collapsible:hover {
-content:"\f067";
-color: black;
-border-bottom: 1px solid black;
+.active,
+.collapsible:hover {
+  content: "\f067";
+  color: black;
+  border-bottom: 1px solid black;
 }
 
 .content {
-padding: 18px;
-display: none;
-overflow: hidden;
-
+  padding: 18px;
+  display: none;
+  overflow: hidden;
 }
