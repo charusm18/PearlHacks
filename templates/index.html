@@ -8,6 +8,7 @@
 
     <!-- Import scripts and stylesheets: keep in <static> -->
     <script src="../static/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <link rel="stylesheet" href="../static/main.css">
 
     <!-- Import outside scripts and stylesheets -->
@@ -34,6 +35,7 @@
         <button type="button" class="collapsible">Perspective</button>
         <div class="content">
                 <p>{{perspectiveValues}}</p>
+                <canvas id="myChart"></canvas>
         </div>
         
         <button type="button" class="collapsible">Emotion</button>
@@ -59,7 +61,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Script for collapsible -->
     <script>
         var coll = document.getElementsByClassName("collapsible");
         var i;
@@ -88,5 +90,61 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script> 
+
+        <script>
+            const toxicity = 100 * "{{perspectiveValues['toxicity'] | safe }}";
+            const insult = 100 *"{{perspectiveValues['insult'] | safe }}";
+            const profanity = 100 *"{{perspectiveValues['profanity'] | safe }}";
+            const threat = 100 *"{{perspectiveValues['threat'] | safe }}";
+            const identity_attack = 100 * "{{perspectiveValues['identity_attack'] | safe }}";
+
+            let myChart = document.getElementById('myChart').getContext('2d');
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            let toxicChart = new Chart(myChart, {
+                type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
+                data: {
+                    labels:['Toxic', 'Not toxic'],
+                    datasets:[ {
+                        label: 'Percentage',
+                        data: [
+                            toxicity, 100- toxicity
+                        ],
+                        backgroundColor: [
+                            'green',
+                            'red'
+                        ],
+                        borderWidth: 1,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: 'black'
+                    }]
+                },
+                options:{
+                    title: {
+                        display: true,
+                        text: 'Toxicity',
+                        fontSize: 25
+                    },
+                    legend: {
+                        display: false,
+                        position: 'right',
+                        labels: {
+                            fontColor: 'black'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 50,
+                            right: 0,
+                            bottom: 0,
+                            top: 0
+                        }
+                    },
+                    tooltips: { // hover thing
+                        enabled: true
+                    }
+                }
+            });
+        </script>
 </body>
 </html>  
