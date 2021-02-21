@@ -187,21 +187,30 @@ h1 {
 
 h2{
   font-family: josefin-regular;
-  font-style: normal;
-  font-weight: normal;
   font-size: 22px;
   line-height: 22px;
   margin-left: 15px;
 }
-
+#sentiment-title{
+  font-family: josefin-regular;
+  font-size: 22px;
+  line-height: 22px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
 .rectangle{
-  background-color: #E2E2E2;
+  background-color: #DCD5E5;
   border-radius: 7px;
   font-family:  josefin-regular;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 20px;
+  padding: 12px 10px;
+  border-style: none;
+}
+.rectangle:focus{
+  outline: 0;
 }
 
 /* Scrollbar */
@@ -277,6 +286,7 @@ html {
   padding: 18px;
   display: none;
   overflow: hidden;
+  margin-top: 30px;
 }
 
 /* Charts */
