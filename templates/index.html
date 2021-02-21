@@ -27,8 +27,11 @@
         <div class="test">
             <p id="description">Type your message into the text box below to see how others might interpret your message based on its toxicity, emotional tone, and other attributes.</p>
             <form method="post" action="/nlp" my-form>
-                <div class="form-group">
-                    <textarea placeholder="Type here to see the impact of your message." name="text" class="form-control" id="exampleFormControlTextarea1"></textarea>
+                <div >
+                    <textarea placeholder="Type here to see the impact of your message." name="text" id="weight"></textarea>
+                </div>
+                <div id="button-holder">
+                    <button id="weight" class="submit-button" type="submit">ENTER</button>
                 </div>
                 <button type="submit" class="btn btn-enter float-right">ENTER</button>
             </form>
@@ -41,24 +44,22 @@
         {% if not initScreen %}
         <button type="button" class="collapsible">Perspective</button>
         <div class="content">
-            <label style = "display: inline-block;">                  
+            <label class="inner" style = "display: inline-block;">                  
                 <canvas id="toxicity" style="width: 70%; display: inline-block; position: relative;"></canvas>
                 <p> A rude, disrespectful, or unreasonable comment that is likely to make people leave a discussion. 
                 The likelihood that someone will perceive your message as toxic is {{(perspectiveValues['toxicity'] * 100)|int}}%. </p>
-               
             </label>
-            <label style = "display: inline-block;">                  
+            <label class="inner" style = "display: inline-block;">                  
                 <canvas id="insult" style="width: 70%; display: inline-block; position: relative;"></canvas>
                 <p> An inflammatory or negative comment towards a person or a group of people that can offend. 
-                    The likelihood that someone will perceive your message as insulting is {{(perspectiveValues['insult'] * 100)|int}}%.<br> </p>
+                    The likelihood that someone will perceive your message as insulting is {{(perspectiveValues['insult'] * 100)|int}}%.</p>
             </label>                
-            
-            <label style = "display: inline-block;">                  
+            <label class="inner" style = "display: inline-block;">                  
                 <canvas id="threat" style="width: 70%; display: inline-block; position: relative;"></canvas>
                 <p> An intention to inflict pain, injury, or violence against an individual or group. 
-                    The likelihood that someone will perceive your message as threatening is {{(perspectiveValues['threat'] * 100)|int}}%.  </p>
+                    The likelihood that someone will perceive your message as threatening is {{(perspectiveValues['threat'] * 100)|int}}%. </p>
             </label>  
-            <label style = "display: inline-block;">                  
+            <label class="inner" style = "display: inline-block;">                  
                 <canvas id="identity_attack" style="width: 70%; display: inline-block; position: relative;"></canvas>
                 <p> A negative or hateful comment targeting someone because of their identity. 
                     The likelihood that someone will perceive your message as an attack on their identity is {{(perspectiveValues['identity_attack'] * 100)|int}}%.  </p>
@@ -73,6 +74,8 @@
         <button type="button" class="collapsible">Sentiment</button>
         <div class="content">
             <p>{{sentimentValues}}</p>
+            <canvas id="polarity" style="width: 70%; display: inline-block; position: relative;"></canvas>
+
         </div>
         {% endif %}
 
@@ -117,11 +120,12 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script> 
 
+    <!-- perspectives charts -->
     <script>
-        const toxicity = 100 * "{{perspectiveValues['toxicity'] | safe }}";
-        const insult = 100 *"{{perspectiveValues['insult'] | safe }}";
-        const threat = 100 *"{{perspectiveValues['threat'] | safe }}";
-        const identity_attack = 100 * "{{perspectiveValues['identity_attack'] | safe }}";
+        let toxicity = (100 * "{{perspectiveValues['toxicity'] | safe }}").toFixed(2);
+        let insult = (100 *"{{perspectiveValues['insult'] | safe }}").toFixed(2);
+        let threat = (100 *"{{perspectiveValues['threat'] | safe }}").toFixed(2);
+        let identity_attack = (100 * "{{perspectiveValues['identity_attack'] | safe }}").toFixed(2);
 
         let tChart = document.getElementById('toxicity').getContext('2d');
         let iChart = document.getElementById('insult').getContext('2d');
@@ -129,7 +133,8 @@
         let idChart = document.getElementById('identity_attack').getContext('2d');
 
 
-        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontFamily = 'lato';
+        Chart.defaults.global.tooltips.bodyFontFamily = "'josefin-regular'"
         let toxicChart = new Chart(tChart, {
             type: 'doughnut', // bar, horizontalBar, pie, line, donut, radar, polarArea
             data: {
@@ -137,7 +142,7 @@
                 datasets:[ {
                     label: 'Percentage',
                     data: [
-                        toxicity, 100- toxicity
+                        toxicity, (100- toxicity).toFixed(2)
                     ],
                     backgroundColor: [
                         "#355070",
@@ -172,7 +177,8 @@
                     display: "inline-block"
                 },
                 tooltips: { // hover thing
-                    enabled: true
+                    enabled: true,
+                    bodyFontSize: 18
                 }
             }
         });
@@ -183,7 +189,7 @@
                 datasets:[ {
                     label: 'Percentage',
                     data: [
-                        insult, 100- insult
+                        insult, (100- insult).toFixed(2)
                     ],
                     backgroundColor: [
                         '#584770',
@@ -218,7 +224,8 @@
                     display: "inline-block"
                 },
                 tooltips: { // hover thing
-                    enabled: true
+                    enabled: true,
+                    bodyFontSize: 18
                 }
             }
         });
@@ -229,7 +236,7 @@
                 datasets:[ {
                     label: 'Percentage',
                     data: [
-                        threat, 100- threat
+                        threat, (100- threat).toFixed(2)
                     ],
                     backgroundColor: [
                         '#B56576',
@@ -264,7 +271,8 @@
                     display: "inline-block"
                 },
                 tooltips: { // hover thing
-                    enabled: true
+                    enabled: true,
+                    bodyFontSize: 18
                 }
             }
         });
@@ -275,7 +283,7 @@
                 datasets:[ {
                     label: 'Percentage',
                     data: [
-                        identity_attack, 100- identity_attack
+                        identity_attack, (100- identity_attack).toFixed(2)
                     ],
                     backgroundColor: [
                         '#EAAC8B',
@@ -310,11 +318,54 @@
                     display: "inline-block"
                 },
                 tooltips: { // hover thing
-                    enabled: true
+                    enabled: true,
+                    bodyFontSize: 18
                 }
             }
         });
     </script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script>
+        const polarity = 100 * "{{sentimentValues['polarity'] | safe }}";
+        Chart.defaults.global.elements.point = "star"
+        var polChart = document.getElementById('polarity').getContext('2d');
+        var myChart = new Chart(polChart, {
+            type: "scatter",
+            data: {
+                datasets: [{
+                    fill: false,
+                    data: [
+                        {x: polarity, y: 0}
+                    ],
+                    borderColor: "red",
+                    pointRadius: 10,
+                }]
+            }, 
+            options: {
+                scales:{
+                    yAxes: [{                
+                        display: false,
+                        gridLines : {
+                            drawOnChartArea: false
+                        }
+                    }],
+                    xAxes: [ { 
+                        ticks: {
+                            min: -1,
+                            stepSize: 0.2
+                        },
+                        position: 'top',
+                        gridLines: { 
+                            display: false
+                        }, 
+                    }]
+                 }
+             }
+            
+        
+    });
+</script>
 
     <!-- Emotion Radar Chart -->
     <script>
