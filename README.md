@@ -1,6 +1,24 @@
-# PearlHacks  
-Installation Guide:  
-## **Flask Installation:**  
+# PearlHacks 2021: Mirror
+<img width="1109" alt="mirror cover" src="https://github.com/charusm18/PearlHacks/assets/43856300/61bf9b7e-309d-46df-a038-3b2739202e77">
+
+<div align="center">
+  <a href="https://devpost.com/software/mirror-917a8h" target="_blank">Devpost</a>
+</div>
+
+---
+## About this app
+Mirror is a web application that interprets messages into perspective, emotion, and sentiment categories which allows users to reflect on how others perceive their messages. Within each category, there are several attributes that could be measured such as toxicity and threat levels, varying emotional tones, polarity, and subjectivity.
+
+## Built with:
+* HTML, CSS, JavaScript, and Bootstrap
+* Perspective API
+* Text2emotion
+* Flask, Jinja
+* Chart.js
+
+---
+## Installation Guide:  
+### **Flask Installation:**  
 ##### 1. Start Virtual Environment:  
 - For Mac:   
   - $ python3 -m venv venv  
@@ -22,7 +40,7 @@ Installation Guide:
 - $ py app.py
 - open up http://127.0.0.1:5000
 
-## **NLP package Installation: (should all be in venv)**    
+### **NLP package Installation: (should all be in venv)**    
 
 ##### SPACY textblob Installation **should all be inthe virtual environment**
 - $ pip install spacytextblob 
